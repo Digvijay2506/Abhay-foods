@@ -1,9 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
 
 @font-face {
     font-family: "Plain Light";
@@ -37,6 +31,16 @@ width: 100%;
 background-color: rgb(255, 242, 242);
 
 }
+:root {
+    --scroll-x: 0;
+    --scroll-y: 0;
+  }
+  
+  .my-element {
+    -webkit-transform: translateX(var(--scroll-x));
+        -ms-transform: translateX(var(--scroll-x));
+            transform: translateX(var(--scroll-x));
+  }
 #nav {
     height: 20%;
     width: 100%;
@@ -97,7 +101,8 @@ background-color: rgb(255, 242, 242);
     left: 2%; /* Align the dropdown content to the left of #nav1 */
     top: 70%; /* Position the dropdown content below the #nav1 */
     overflow-y: hidden; /* Add scroll if content exceeds the dropdown's height */
-    max-height: 200px; /* Set a max-height to prevent the dropdown from growing too large */
+    max-height: 200px; 
+    z-index: 100;/* Set a max-height to prevent the dropdown from growing too large */
 }
 
 #nav1 .dropdown-content.show {
@@ -193,6 +198,8 @@ background-color: rgb(255, 242, 242);
     border: 2px solid #575757;
     font-size: 2vh;
     font-weight: 700;
+    color: #EE2A7B;
+
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
@@ -313,7 +320,30 @@ background-color: rgb(255, 242, 242);
     font-size: 20vh;
     margin-top: 2vw;
     letter-spacing: 9px;
+    background: radial-gradient(circle at center, #EC2690, #FFD701, #A52A2A,#EC2690,rgb(225, 125, 37), #A52A2A,#EC2690);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 5px rgba(1, 0, 0, 0.3); /* adjust shadow offset, blur, and opacity */
+
+    text-fill-color: transparent;
+    animation: gradient-animation 10s linear infinite;
 }
+
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 40%;
+    }
+    50% {
+        background-position: 80% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 
 
@@ -337,6 +367,7 @@ background-color: rgb(255, 242, 242);
     font-size: 10vh;
     font-weight: 700;
     margin-bottom: 40px;
+    
 }
 .main-container {
     display: -webkit-box;
@@ -367,11 +398,13 @@ background-color: rgb(255, 242, 242);
 }
 .bottom {
    
-
-    color: #fcf8f8;
+    
     margin-top: -160px;
 }
 .bottom h1{
+    letter-spacing: 2px;
+    color: #fcf8f8;
+
     font-family: 'Andalia';
     font-size: 3vw;
 }
@@ -530,6 +563,8 @@ background-color: rgb(255, 242, 242);
     font-weight: 550;
     color: #582506;
     cursor: pointer;
+    box-shadow: 1px 1px 5px 1px #5f5c5c;
+
 
  }
 
@@ -634,7 +669,9 @@ background-color: rgb(255, 242, 242);
     height:60%;
     width: 50%;
     border-radius: 50%;
-    border: 2px solid #FDEF1A;
+    border: 3px solid #EC2690;
+    box-shadow: 2px 2px 20px 4px #5f5c5c;
+
 
        /* background-color: #71340F; */
 
@@ -661,10 +698,11 @@ font-size: 1.5vw;
     height:60%;
     width: 50%;
     border-radius: 50%;
-    border: 2px solid #FDEF1A;
+    border: 3px solid #EC2690;
+    box-shadow: 2px 2px 20px 4px #5f5c5c;
 
        background-color: #71340F;
-       background-image: url('./assets/images/treee.jpg');
+       background-image: url('./assets/images/tree.png');
        background-size: cover;
        background-position: center;
 
@@ -689,7 +727,8 @@ font-size: 1.5vw;
     height:60%;
     width: 50%;
     border-radius: 50%;
-    border: 2px solid #FDEF1A;
+    border: 3px solid #EC2690;
+    box-shadow: 2px 2px 20px 4px #5f5c5c;
 
        background-color: #71340F;
       background-image: url('./assets/images/farmm.jfif');
@@ -749,10 +788,15 @@ font-size: 1.5vw;
 }
 #slid h1{
     color: #000;
+}
+#slid span{
+    color: #EC2690;
     font-size: 6vh;
+    letter-spacing: 2px;
+
 }
 #slid h2{
-    color: #000;
+    color: #EC2690;
     font-size: 4vh;
  
 }
@@ -1663,7 +1707,7 @@ footer {
     position: absolute;
     top: 50%;
     font-size: 24px;
-    color: white;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     z-index: 1;
 }
@@ -1680,22 +1724,54 @@ footer {
 #tagline {
     position: absolute;
     height: 100%;
-    width: 25%;
-    background-color: antiquewhite;
+    width: 50%;
+    /* background-color: antiquewhite; */
     
     padding: 4vw 4vw;
     z-index: 2;
 }
 
-#tagline h1 {
+
+/* #tagline h1 {
     color: rgb(78, 53, 42);
     font-family: 'Plain bold';
     text-transform: uppercase;
     font-size: 7vw;
     margin-top: 4vw;
+} */
+
+
+#tagline h1 {
+    color: #EC2690;
+    font-family: 'Andalia';
+    text-transform: uppercase;
+    font-size: 10vw;
+    margin-top: 2vw;
+    
+    letter-spacing: 2px;
+    background: radial-gradient(circle at center, #EC2690, #FFD701, #A52A2A,#EC2690,rgb(225, 125, 37), #A52A2A,#EC2690);
+    background-size: 50% 50%;
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    background-clip: text;
+    text-shadow: 2px 2px 5px rgba(1, 0, 0, 0.3); /* adjust shadow offset, blur, and opacity */
+
+    /* text-fill-color: transparent; */
+    animation: gradient-animation 10s linear infinite;
 }
 
 
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 40%;
+    }
+    50% {
+        background-position: 80% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 
 
@@ -2081,7 +2157,7 @@ font-size: 2vw;
     border: 2px solid #FDEF1A;
 
        background-color: #71340F;
-       background-image: url('./assets/images/treee.jpg');
+       background-image: url('./assets/images/tree.png');
        background-size: cover;
        background-position: center;
        margin-top: 22%;

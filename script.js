@@ -1,3 +1,8 @@
+window.addEventListener("scroll", () => {
+    document.documentElement.style.setProperty("--scroll-x", window.scrollX + "px");
+    document.documentElement.style.setProperty("--scroll-y", window.scrollY + "px");
+  });
+
 document.addEventListener("DOMContentLoaded", function() {
     const slide = document.getElementById("slide");
     const images = slide.querySelectorAll("img");
@@ -44,41 +49,7 @@ $('.buy').click(function(){
 
 
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('#slid .slider');
-    const slides = document.querySelectorAll('#slid .slide');
-    const leftArrow = document.querySelector('#slid .left-arrow');
-    const rightArrow = document.querySelector('#slid .right-arrow');
-    let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length; // Loop back to the first slide after the last
-        updateSlider();
-    }
-
-    function updateSlider() {
-        slides.forEach(slide => slide.classList.remove('visible'));
-        slides[currentSlide].classList.add('visible');
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    leftArrow.addEventListener('click', function() {
-        clearInterval(slideInterval); // Stop automatic slide change
-        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
-        updateSlider();
-        slideInterval = setInterval(nextSlide, 3000); // Resume automatic slide change
-    });
-
-    rightArrow.addEventListener('click', function() {
-        clearInterval(slideInterval); // Stop automatic slide change
-        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
-        updateSlider();
-        slideInterval = setInterval(nextSlide, 3000); // Resume automatic slide change
-    });
-
-    updateSlider();
-});
+  
 
   
   // Example: Add a click event to the flip-card to toggle the flip effect
@@ -87,6 +58,7 @@ document.querySelectorAll('.flip-card').forEach(card => {
         card.querySelector('.flip-card-inner').classList.toggle('is-flipped');
     });
 });
+
 
 
 
@@ -153,3 +125,381 @@ function closePopupForm() {
     popup.style.display = "none";
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('#slid .slider');
+    const slides = document.querySelectorAll('#slid .slide');
+    const leftArrow = document.querySelector('#slid .left-arrow');
+    const rightArrow = document.querySelector('#slid .right-arrow');
+    let currentSlide = 0;
+    let slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length; // Loop back to the first slide after the last
+        updateSlider();
+    }
+
+    function updateSlider() {
+        slides.forEach(slide => slide.classList.remove('visible'));
+        slides[currentSlide].classList.add('visible');
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    leftArrow.addEventListener('click', function() {
+        clearInterval(slideInterval); // Stop automatic slide change
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+        updateSlider();
+        slideInterval = setInterval(nextSlide, 3000); // Resume automatic slide change
+    });
+
+    rightArrow.addEventListener('click', function() {
+        clearInterval(slideInterval); // Stop automatic slide change
+        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+        updateSlider();
+        slideInterval = setInterval(nextSlide, 3000); // Resume automatic slide change
+    });
+
+    updateSlider();
+});
+
+
+gsap.from("#nav h3",{
+    y:-50,
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    stagger:0.2
+  })
+
+  gsap.from("#tagline h1",{
+    x:-500,
+    opacity:0,
+    duration:0.8,
+    stagger:0.4,
+    scrollTrigger:{
+      trigger:"#tagline",
+      scroller:"#main",
+    }
+  })
+
+  gsap.from("#nav2",{
+    scale:0,
+    duration:1,
+    scrollTrigger:{
+      trigger:"#nav",
+      scroller:"#main",
+      markers:false,
+    }
+  })
+
+
+
+  gsap.from("#page2 .main-container .product-container", {
+    scale:0,
+    duration:1,
+    scrollTrigger: {
+      trigger: "#page2 .main-container .product-container",
+      scrollers:"#main",
+      start:"top 180%" // Adjust this according to your desired end point
+    }
+  });
+
+gsap.from("#page3 #behind h3", {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.4,
+    scrollTrigger: {
+        trigger: "#page3 #behind h3",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#page3 #behind h1", {
+  
+    scale:0,
+    duration:1.6,
+    scrollTrigger: {
+        trigger: "#page3 #behind h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 70%" 
+         // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#page3 #behind p", {
+  
+    opacity:0,
+    duration:1,
+    scale:1.1,    
+    scrollTrigger: {
+        trigger: "#page3 #behind p",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 60%" 
+         // Adjust this according to your desired end point
+        
+    }
+});
+
+
+gsap.from("#page4 #root1 h1", {
+    y:-50,
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    stagger:0.2,
+    scrollTrigger: {
+        trigger: "#page4 #root1 h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+gsap.from("#page4 #root1 p", {
+  
+    opacity:0,
+    duration:1,
+    scale:1.1,    
+    scrollTrigger: {
+        trigger: "#page4 #root1 p",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 60%" 
+         // Adjust this according to your desired end point
+        
+    }
+});
+
+
+gsap.from("#root2 #company1 #com1",{
+
+    scale:0,
+    duration:1,
+   
+    scrollTrigger:{
+         
+        trigger:"#root2 #company1 #com1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 80%"
+
+    }
+})
+gsap.from("#root2 #company1 h1", {
+    y:-50,
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    stagger:0.2,
+    scrollTrigger: {
+        trigger: "#root2 #company1 h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+gsap.from("#root2 #company2 #com2",{
+
+    scale:0,
+    duration:1,
+   
+    scrollTrigger:{
+         
+        trigger:"#root2 #company2 #com2",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 80%"
+
+    }
+})
+gsap.from("#root2 #company2 h1", {
+    y:-50,
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    stagger:0.2,
+    scrollTrigger: {
+        trigger: "#root2 #company2 h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+gsap.from("#root2 #company3 #com3",{
+
+    scale:0,
+    duration:1,
+   
+    scrollTrigger:{
+         
+        trigger:"#root2 #company1 #com1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 80%"
+
+    }
+})
+gsap.from("#root2 #company3 h1", {
+    y:-50,
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    stagger:0.2,
+    scrollTrigger: {
+        trigger: "#root2 #company3 h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#root2 #company1 #bot", {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.4,
+    scrollTrigger: {
+        trigger: "#root2 #company1 #bot",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+gsap.from("#root2 #company2 #bot", {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.4,
+    scrollTrigger: {
+        trigger: "#root2 #company2 #bot",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#root2 #company3 #bot", {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.4,
+    scrollTrigger: {
+        trigger: "#root2 #company3 #bot",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#slid h1",{
+
+    scale:1.5,
+    duration:1,
+   
+    scrollTrigger:{
+         
+        trigger:"#slid h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 80%"
+
+    }
+})
+
+gsap.from("#slid h2", {
+    y:-50,
+    opacity:0,
+    duration:1,
+    scrollTrigger: {
+        trigger: "#slid h2",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#page5 #map2",{
+
+    scale:0,
+    duration:1,
+   
+    scrollTrigger:{
+         
+        trigger:"#page5 #map2",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 90%"
+
+    }
+})
+
+gsap.from("#map12 h1", {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.4,
+    scrollTrigger: {
+        trigger: "#map12 h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 95%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from("#map12 h3", {
+    y:-50,
+    opacity:0,
+    duration:1,
+    scrollTrigger: {
+        trigger: "#map12 h3",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 70%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from(".footer-section h1", {
+    y:-50,
+    opacity:0,
+    delay:0.4,
+
+    duration:1.3,
+    scrollTrigger: {
+        trigger: ".footer-section h1",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 70%" // Adjust this according to your desired end point
+        
+    }
+});
+
+gsap.from(".footer-section .footer-logo",{
+
+    y:-50,
+    opacity:0,
+    delay:0.4,
+   
+    scrollTrigger:{
+         
+        trigger:".footer-section .footer-logo",
+        scrollers:"#main",
+        // markers:true,
+        start:"top 80%"
+
+    }
+})
